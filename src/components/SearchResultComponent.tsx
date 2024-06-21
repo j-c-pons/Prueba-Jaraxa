@@ -3,9 +3,9 @@ import { OpenFDADrug } from "../types/openFDA";
 import {
   Typography,
   List,
-  ListItem,
   ListItemText,
   Pagination,
+  ListItemButton,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
@@ -43,7 +43,7 @@ const SearchResultComponent: React.FC<DrugListProps> = ({
       </Typography>
       <List>
         {results.map((drug, index) => (
-          <ListItem button key={index} onClick={() => handleDrugClick(drug)}>
+          <ListItemButton key={index} onClick={() => handleDrugClick(drug)}>
             <ListItemText
               primary={drug.openfda.brand_name}
               secondary={
@@ -52,7 +52,7 @@ const SearchResultComponent: React.FC<DrugListProps> = ({
                   : drug.openfda.generic_name[0].slice(0, 30) + "..."
               }
             />
-          </ListItem>
+          </ListItemButton>
         ))}
       </List>
       <Pagination count={totalPage} page={page} onChange={handlePageChange} />
