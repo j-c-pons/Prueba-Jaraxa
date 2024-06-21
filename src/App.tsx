@@ -2,14 +2,17 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import SearchComponent from "./components/SearchComponent";
-import DrugDetailsPage from "./components/DrugDetailsPage";
+import DrugComponent from "./components/DrugComponent";
+import { SearchProvider } from "./context/SearchContext";
 
 const App: React.FC = () => {
   return (
-    <Routes>
-      <Route path="/" element={<SearchComponent />} />
-      <Route path="/drug/:drugName" element={<DrugDetailsPage />} />
-    </Routes>
+    <SearchProvider>
+      <Routes>
+        <Route path="/" element={<SearchComponent />} />
+        <Route path="/drug/:drugName" element={<DrugComponent />} />
+      </Routes>
+    </SearchProvider>
   );
 };
 
